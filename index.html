@@ -59,6 +59,18 @@ img {
   margin:15px 0;
 }
 
+/* REMOVE GREEN TICKS / FOCUS */
+button,
+button:focus,
+button:active {
+  outline:none !important;
+  box-shadow:none !important;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 button {
   padding:12px 30px;
   font-size:18px;
@@ -67,13 +79,7 @@ button {
   cursor:pointer;
   position:absolute;
   transition:transform 0.2s;
-  outline:none;
-  box-shadow:none;
 }
-
-button:focus { outline:none; }
-
-* { -webkit-tap-highlight-color: transparent; }
 
 #yes {
   background:var(--main-color);
@@ -151,7 +157,7 @@ button:focus { outline:none; }
 
 <div class="container" id="box">
 
-  <h1>Hey Rehan❤️ Will you be my Valentine?</h1>
+  <h1>Hey Rehan ❤️ Will you be my Valentine?</h1>
 
   <img id="cute" src="https://media.tenor.com/0AVbKGY_MxMAAAAC/cute-love.gif">
 
@@ -161,7 +167,7 @@ button:focus { outline:none; }
   <div class="happy" id="happy">
     <h1>YAYYYY!!! 💖🥰</h1>
 
-    <!-- 🔴 CHANGE THIS IMAGE -->
+    <!-- YOUR PHOTO -->
     <img src="us.jpeg" style="width:220px;border-radius:20px;">
 
     <p>You made my day 💌</p>
@@ -236,4 +242,3 @@ function setTheme(theme){
 
 </body>
 </html>
-
