@@ -6,123 +6,137 @@
 
 <style>
 :root {
-    --main-color: #ff4d6d;
-    --bg1: #ff9a9e;
-    --bg2: #fad0c4;
+  --main-color:#ff4d6d;
+  --bg1:#ff9a9e;
+  --bg2:#fad0c4;
 }
 
 /* THEMES */
 body.red {
-    --main-color: #ff4d6d;
-    --bg1: #ff9a9e;
-    --bg2: #fad0c4;
+  --main-color:#ff4d6d;
+  --bg1:#ff9a9e;
+  --bg2:#fad0c4;
 }
-
 body.purple {
-    --main-color: #9b5de5;
-    --bg1: #cdb4db;
-    --bg2: #ffc8dd;
+  --main-color:#9b5de5;
+  --bg1:#cdb4db;
+  --bg2:#ffc8dd;
 }
-
 body.pastel {
-    --main-color: #ffafcc;
-    --bg1: #fde2e4;
-    --bg2: #fadadd;
+  --main-color:#ffafcc;
+  --bg1:#fde2e4;
+  --bg2:#fadadd;
 }
 
 body {
-    background: linear-gradient(135deg, var(--bg1), var(--bg2));
-    font-family: 'Comic Sans MS', cursive;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  font-family: "Comic Sans MS", cursive;
+  height:100vh;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 }
 
 .container {
-    background: white;
-    padding: 30px;
-    border-radius: 25px;
-    text-align: center;
-    width: 360px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    position: relative;
-    z-index: 2;
+  background:white;
+  width:360px;
+  padding:30px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 15px 30px rgba(0,0,0,0.3);
+  position:relative;
+  z-index:2;
 }
 
 h1 {
-    color: var(--main-color);
+  color:var(--main-color);
 }
 
 img {
-    width: 160px;
-    margin: 15px 0;
+  width:160px;
+  margin:15px 0;
 }
 
 button {
-    padding: 12px 30px;
-    font-size: 18px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    transition: transform 0.2s;
+  padding:12px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  position:absolute;
+  transition:transform 0.2s;
+  outline:none;
+  box-shadow:none;
 }
 
+button:focus { outline:none; }
+
+* { -webkit-tap-highlight-color: transparent; }
+
 #yes {
-    background: var(--main-color);
-    color: white;
-    left: 60px;
-    bottom: 30px;
+  background:var(--main-color);
+  color:white;
+  left:60px;
+  bottom:30px;
 }
 
 #no {
-    background: #aaa;
-    color: white;
-    right: 60px;
-    bottom: 30px;
+  background:#aaa;
+  color:white;
+  right:60px;
+  bottom:30px;
 }
 
+/* HAPPY SECTION */
 .happy {
-    display: none;
-    animation: pop 0.6s ease-in-out;
+  display:none;
+  animation:pop 0.6s ease;
 }
 
 @keyframes pop {
-    0% { transform: scale(0.5); }
-    100% { transform: scale(1); }
+  from {transform:scale(0.5);}
+  to {transform:scale(1);}
 }
+
+/* SCREEN SHAKE */
+@keyframes shake {
+  0% {transform:translate(0);}
+  25% {transform:translate(-5px,5px);}
+  50% {transform:translate(5px,-5px);}
+  75% {transform:translate(-5px,-5px);}
+  100% {transform:translate(0);}
+}
+.shake { animation:shake 0.3s; }
 
 /* FLOATING HEARTS */
 .heart {
-    position: absolute;
-    bottom: -20px;
-    color: var(--main-color);
-    font-size: 20px;
-    animation: float 6s linear infinite;
-    opacity: 0.7;
+  position:absolute;
+  bottom:-20px;
+  color:var(--main-color);
+  font-size:20px;
+  animation:float 6s linear infinite;
+  opacity:0.7;
 }
 
 @keyframes float {
-    0% { transform: translateY(0); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(-100vh); opacity: 0; }
+  0% {transform:translateY(0);opacity:0;}
+  50% {opacity:1;}
+  100% {transform:translateY(-100vh);opacity:0;}
 }
 
 /* THEME SWITCH */
 .theme-switch {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+  position:absolute;
+  top:10px;
+  left:10px;
 }
-
 .theme-switch button {
-    position: static;
-    margin: 2px;
-    font-size: 12px;
-    padding: 5px 10px;
+  position:static;
+  font-size:12px;
+  padding:5px 10px;
+  margin:2px;
 }
 </style>
 </head>
@@ -130,51 +144,64 @@ button {
 <body class="red">
 
 <div class="theme-switch">
-    <button onclick="setTheme('red')">❤️ Red</button>
-    <button onclick="setTheme('purple')">💜 Purple</button>
-    <button onclick="setTheme('pastel')">🎀 Pastel</button>
+  <button onclick="setTheme('red')">❤️ Red</button>
+  <button onclick="setTheme('purple')">💜 Purple</button>
+  <button onclick="setTheme('pastel')">🎀 Pastel</button>
 </div>
 
 <div class="container" id="box">
 
-    <h1>Hey ❤️ Will you be my Valentine?</h1>
+  <h1>Hey Rehan❤️ Will you be my Valentine?</h1>
 
-    <img id="cute" src="https://media.tenor.com/0AVbKGY_MxMAAAAC/cute-love.gif">
+  <img id="cute" src="https://media.tenor.com/0AVbKGY_MxMAAAAC/cute-love.gif">
 
-    <button id="yes">YES 💕</button>
-    <button id="no">NO 😝</button>
+  <button id="yes">YES 💕</button>
+  <button id="no">NO 😝</button>
 
-    <div class="happy" id="happy">
-        <h1>YAYYYY!!! 💖🥰</h1>
-        <img src="https://media.tenor.com/Z8ezUHZzcLoAAAAC/love-happy.gif">
-        <p>You made my day 💌</p>
-    </div>
+  <div class="happy" id="happy">
+    <h1>YAYYYY!!! 💖🥰</h1>
 
+    <!-- 🔴 CHANGE THIS IMAGE -->
+    <img src="us.jpg" style="width:220px;border-radius:20px;">
+
+    <p>You made my day 💌</p>
+  </div>
 </div>
 
 <audio id="sound">
-    <source src="https://www.soundjay.com/human/sounds/applause-8.mp3">
+  <source src="https://www.soundjay.com/human/sounds/applause-8.mp3">
 </audio>
 
 <script>
 const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const box = document.getElementById("box");
+
 let scale = 1;
 
-/* NO BUTTON RUN + SHRINK */
+/* NO BUTTON LOGIC */
 function moveNo() {
-    const maxX = box.clientWidth - noBtn.clientWidth;
-    const maxY = box.clientHeight - noBtn.clientHeight;
+  box.classList.add("shake");
+  setTimeout(()=>box.classList.remove("shake"),300);
 
-    noBtn.style.left = Math.random() * maxX + "px";
-    noBtn.style.top = Math.random() * maxY + "px";
+  const maxX = box.clientWidth - noBtn.clientWidth;
+  const maxY = box.clientHeight - noBtn.clientHeight;
 
-    scale -= 0.1;
+  noBtn.style.left = Math.random()*maxX + "px";
+  noBtn.style.top  = Math.random()*maxY + "px";
+
+  scale -= 0.15;
+
+  if (scale <= 0.35) {
+    noBtn.innerHTML = "YES 😏";
+    noBtn.style.background = "var(--main-color)";
+    noBtn.style.transform = "scale(0.9)";
+    noBtn.onmouseover = null;
+    noBtn.ontouchstart = null;
+    noBtn.onclick = () => yesBtn.click();
+  } else {
     noBtn.style.transform = `scale(${scale})`;
-    if (scale <= 0.4) {
-        noBtn.style.display = "none";
-    }
+  }
 }
 
 noBtn.addEventListener("mouseover", moveNo);
@@ -182,29 +209,28 @@ noBtn.addEventListener("touchstart", moveNo);
 
 /* YES CLICK */
 yesBtn.addEventListener("click", () => {
-    document.getElementById("cute").style.display = "none";
-    yesBtn.style.display = "none";
-    noBtn.style.display = "none";
-    document.getElementById("happy").style.display = "block";
-    document.getElementById("sound").play();
+  document.getElementById("cute").style.display="none";
+  yesBtn.style.display="none";
+  noBtn.style.display="none";
+  document.getElementById("happy").style.display="block";
+  document.getElementById("sound").play();
 });
 
 /* HEARTS */
 function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 10 + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 6000);
+  const heart = document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(Math.random()*20+10)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
 }
-setInterval(createHeart, 300);
+setInterval(createHeart,300);
 
 /* THEME */
-function setTheme(theme) {
-    document.body.className = theme;
+function setTheme(theme){
+  document.body.className=theme;
 }
 </script>
 
